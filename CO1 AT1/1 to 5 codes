@@ -1,0 +1,151 @@
+
+#1
+num <- 25.5
+name <- "R Programming"
+status <- TRUE
+print(num)
+print(name)
+print(status)
+addition <- num + 15
+subtraction <- num - 5
+multiplication <- num * 2
+division <- num / 5
+and_result <- status & TRUE
+or_result <- status | FALSE
+not_result <- !status
+comparison <- num > 20
+cat("Addition =", addition, "\n")
+cat("Subtraction =", subtraction, "\n")
+cat("Multiplication =", multiplication, "\n")
+cat("Division =", division, "\n")
+cat("AND Result =", and_result, "\n")
+cat("OR Result =", or_result, "\n")
+cat("NOT Result =", not_result, "\n")
+cat("Comparison Result =", comparison, "\n")
+
+
+
+
+#2
+vec <- c(10, 20, 30, 40, 50)
+student <- list(
+  Name = "Rahul",
+  Age = 21,
+  City = "Chennai",
+  Marks = c(80, 85, 90)
+)
+mat <- matrix(c(1,2,3,
+                4,5,6,
+                7,8,9),
+              nrow = 3,
+              byrow = TRUE)
+print(vec)
+print(student)
+print(mat)
+cat("Second element of vector =", vec[2], "\n")
+cat("Age =", student$Age, "\n")
+cat("Matrix element (2,3) =", mat[2,3], "\n")
+vec[3] <- 35
+student$City <- "Madurai"
+mat[1,2] <- 25
+cat("\nUpdated Vector\n")
+print(vec)
+cat("\nUpdated List\n")
+print(student)
+cat("\nUpdated Matrix\n")
+print(mat)
+cat("Sum =", sum(vec), "\n")
+cat("Average =", mean(vec), "\n")
+cat("\nComparison\n")
+cat("Vector : Stores same data type\n")
+cat("List : Stores different data types\n")
+cat("Matrix : Two-dimensional same data type\n")
+
+
+
+
+
+
+#3
+A <- matrix(c(1,2,
+              3,4),
+            nrow=2,
+            byrow=TRUE)
+B <- matrix(c(5,6,
+              7,8),
+            nrow=2,
+            byrow=TRUE)
+arr <- array(1:8, dim = c(2,2,2))
+addition <- A + B
+multiplication <- A %*% B
+elementwise <- A * B
+cat("Matrix A\n")
+print(A)
+cat("Matrix B\n")
+print(B)
+cat("Matrix Addition\n")
+print(addition)
+cat("Matrix Multiplication\n")
+print(multiplication)
+cat("Element-wise Multiplication\n")
+print(elementwise)
+cat("3D Array\n")
+print(arr)
+
+
+
+
+
+
+#4
+student <- data.frame(
+  RollNo = c(101,102,103),
+  Name = c("Rahul","Anitha","Kumar"),
+  Marks = c(85,90,88)
+)
+cat("Original Data Frame\n")
+print(student)
+student$Grade <- c("A","A+","A")
+cat("\nAfter Adding Grade\n")
+print(student)
+student$Marks <- c(90,95,92)
+cat("\nAfter Updating Marks\n")
+print(student)
+student$Grade <- NULL
+cat("\nAfter Deleting Grade\n")
+print(student)
+cat("\nSummary\n")
+cat("Rows =", nrow(student), "\n")
+cat("Columns =", ncol(student), "\n")
+cat("Average Marks =", mean(student$Marks), "\n")
+cat("Maximum Marks =", max(student$Marks), "\n")
+cat("Minimum Marks =", min(student$Marks), "\n")
+summary(student)
+
+
+
+
+
+#5
+calculateSquare <- function(num)
+{
+  square <- num * num
+  return(square)
+}
+value <- 8
+answer <- calculateSquare(value)
+cat("Square =", answer, "\n")
+logicalVector <- c(TRUE, FALSE, TRUE, TRUE, FALSE)
+andResult <- logicalVector & TRUE
+orResult <- logicalVector | FALSE
+notResult <- !logicalVector
+countTrue <- sum(logicalVector)
+cat("\nLogical Vector\n")
+print(logicalVector)
+cat("AND Result\n")
+print(andResult)
+cat("OR Result\n")
+print(orResult)
+cat("NOT Result\n")
+print(notResult)
+cat("Number of TRUE values =", countTrue, "\n")
