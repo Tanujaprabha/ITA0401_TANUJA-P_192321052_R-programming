@@ -1,0 +1,180 @@
+#1
+data <- read.csv("D:/customer_data.csv")
+mean_purchase <- mean(data$Purchase_Amount)
+median_purchase <- median(data$Purchase_Amount)
+mode_purchase <- names(sort(table(data$Purchase_Amount),
+                            decreasing = TRUE))[1]
+cat("Mean =", mean_purchase, "\n")
+cat("Median =", median_purchase, "\n")
+cat("Mode =", mode_purchase, "\n")
+
+
+
+
+#2
+data <- read.csv("D:/customer_data.csv")
+purchase_range <- range(data$Purchase_Amount)
+purchase_variance <- var(data$Purchase_Amount)
+purchase_sd <- sd(data$Purchase_Amount)
+purchase_iqr <- IQR(data$Purchase_Amount)
+cat("Range =", purchase_range, "\n")
+cat("Variance =", purchase_variance, "\n")
+cat("Standard Deviation =", purchase_sd, "\n")
+cat("Interquartile Range =", purchase_iqr, "\n") 
+
+
+
+
+#3
+data <- read.csv("D:/customer_data.csv")
+summary(data$Customer_Rating)
+boxplot(Customer_Rating ~ Membership_Status,
+        data = data,
+        col = c("lightblue","pink"),
+        main = "Customer Rating by Membership Status",
+        xlab = "Membership Status",
+        ylab = "Customer Rating")
+hist(data$Customer_Rating,
+     col = "lightgreen",
+     main = "Customer Rating Distribution",
+     xlab = "Customer Rating")
+
+
+
+
+
+#4
+data <- read.csv("D:/customer_data.csv")
+plot(data$Monthly_Income,
+     data$Purchase_Amount,
+     xlab = "Monthly Income",
+     ylab = "Purchase Amount",
+     main = "Income vs Purchase Amount",
+     pch = 19,
+     col = "blue")
+correlation <- cor(data$Monthly_Income,
+                   data$Purchase_Amount)
+cat("Correlation =", correlation, "\n")
+model <- lm(Purchase_Amount ~ Monthly_Income,
+            data = data)
+abline(model,
+       col = "red",
+       lwd = 2)
+
+
+
+#5
+data <- read.csv("D:/customer_data.csv")
+result <- t.test(Purchase_Amount ~ Gender,
+                 data = data)
+print(result)
+
+
+
+
+#6
+data <- read.csv("D:/customer_data.csv")
+anova_result <- aov(Customer_Rating ~ Store_Type,
+                    data = data)
+summary(anova_result)
+boxplot(Customer_Rating ~ Store_Type,
+        data = data,
+        col = c("yellow","green","orange"),
+        main = "Customer Rating by Store Type",
+        xlab = "Store Type",
+        ylab = "Customer Rating")
+
+
+
+#7
+data <- read.csv("D:/customer_data.csv")
+table_data <- table(data$Membership_Status,
+                    data$Product_Category)
+print(table_data)
+result <- chisq.test(table_data)
+print(result)
+
+
+
+
+
+#8
+data <- read.csv("D:/customer_data.csv")
+summary(data)
+aggregate(Purchase_Amount ~ Membership_Status,
+          data = data,
+          mean)
+aggregate(Customer_Rating ~ Membership_Status,
+          data = data,
+          mean)
+boxplot(Purchase_Amount ~ Membership_Status,
+        data = data,
+        col = c("lightblue","pink"),
+        main = "Purchase Amount by Membership")
+hist(data$Purchase_Amount,
+     col = "lightgreen",
+     main = "Purchase Amount Distribution",
+     xlab = "Purchase Amount")
+barplot(table(data$Membership_Status),
+        col = "orange",
+        main = "Membership Status") 
+
+
+
+
+#9
+data <- read.csv("D:/customer_data.csv")
+cat("Mean =", mean(data$Purchase_Amount), "\n")
+cat("Median =", median(data$Purchase_Amount), "\n")
+cat("Variance =", var(data$Purchase_Amount), "\n")
+cat("Standard Deviation =", sd(data$Purchase_Amount), "\n")
+correlation <- cor(data$Monthly_Income,
+                   data$Purchase_Amount)
+cat("Correlation =", correlation, "\n")
+boxplot(Purchase_Amount ~ Gender,
+        data = data,
+        col = c("skyblue","pink"),
+        main = "Purchase Amount by Gender")
+boxplot(Purchase_Amount ~ Membership_Status,
+        data = data,
+        col = c("yellow","green"),
+        main = "Purchase Amount by Membership")
+plot(data$Monthly_Income,
+     data$Purchase_Amount,
+     pch = 19,
+     col = "blue",
+     main = "Income vs Purchase Amount")
+abline(lm(Purchase_Amount ~ Monthly_Income,
+          data = data),
+       col = "red")
+
+
+
+
+
+#10
+data <- read.csv("D:/customer_data.csv")
+cat("BUSINESS ANALYTICS REPORT\n\n")
+cat("Mean Purchase Amount =",
+    mean(data$Purchase_Amount), "\n")
+cat("Median Purchase Amount =",
+    median(data$Purchase_Amount), "\n")
+cat("Standard Deviation =",
+    sd(data$Purchase_Amount), "\n")
+cat("Correlation =",
+    cor(data$Monthly_Income,
+        data$Purchase_Amount), "\n\n")
+cat("T-Test\n")
+ttest_result <- t.test(Purchase_Amount ~ Gender,
+                       data = data)
+print(ttest_result)
+cat("\nANOVA\n")
+anova_result <- aov(Customer_Rating ~ Store_Type,
+                    data = data)
+print(summary(anova_result))
+cat("\nChi-Square Test\n")
+chi_table <- table(data$Membership_Status,
+                   data$Product_Category)
+chi_result <- chisq.test(chi_table)
+print(chi_result)
+cat("\nReport Completed Successfully\n")
